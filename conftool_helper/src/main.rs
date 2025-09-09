@@ -1,6 +1,8 @@
 use clap::{Parser, Subcommand};
+use dotenv::dotenv;
 
 mod mandatory_reviewers;
+mod openai;
 
 #[derive(Parser)]
 #[command(name = "conftool_helper")]
@@ -17,6 +19,9 @@ enum Commands {
 }
 
 fn main() {
+    // Load environment vars
+    dotenv().ok();
+
     let cli = Cli::parse();
 
     match cli.command {
