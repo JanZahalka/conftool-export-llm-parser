@@ -21,8 +21,8 @@ target
 #.idea/
 
 
-# The exported data from ConfTool
-conftool_data/
+# The data dir
+data/
 
 # Environment variables (contains API keys)
 .env

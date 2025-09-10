@@ -15,7 +15,11 @@ struct Cli {
 #[derive(Subcommand)]
 enum Commands {
     #[command(about = "Parse and process mandatory reviewers data")]
-    MandatoryReviewers,
+    MandatoryReviewers {
+        /// Overwrite existing output files
+        #[arg(long)]
+        overwrite: bool,
+    },
 }
 
 fn main() {
@@ -25,8 +29,8 @@ fn main() {
     let cli = Cli::parse();
 
     match cli.command {
-        Commands::MandatoryReviewers => {
-            if let Err(e) = mandatory_reviewers::parse_mandatory_reviewers() {
+        Commands::MandatoryReviewers { overwrite } => {
+            if let Err(e) = mandatory_reviewers::parse_mandatory_reviewers(overwrite) {
                 eprintln!("Error processing mandatory reviewers: {}", e);
                 std::process::exit(1);
             }

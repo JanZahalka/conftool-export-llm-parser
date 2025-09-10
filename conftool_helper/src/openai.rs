@@ -15,6 +15,7 @@ const CHAT_MODEL_DEFAULT: &str = "gpt-5-nano";
 
 /// Prompts directory
 pub const SYSTEM_PROMPTS_DIR_PATH: &str = "prompts/system";
+pub const USER_PROMPTS_DIR_PATH: &str = "prompts/user";
 
 /// OpenAI chat response, synchronous wrapper over the async functionality
 pub fn chat_response(
